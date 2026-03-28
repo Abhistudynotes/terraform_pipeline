@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: 'Terraform'
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest        # ← FIXED: added runs-on
+
+    env:
+      ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID }}
+    environment: dev
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.0
+
+      - name: terraform init
+        run: terraform init
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+  
