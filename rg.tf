@@ -27,3 +27,10 @@ resource "azurerm_resource_group" "rg" {
   name     = "test01"
   location = "eastus"
 }
+
+
+resource "azurerm_resource_group" "rg" {
+
+  name     = "test02"
+  location = "eastus"
+}
